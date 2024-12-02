@@ -72,12 +72,10 @@ def compare_stats(all_stats):
         print("")
     
     # print all of the stats for each function 
-    '''
     for function in all_stats:
         print(f"stats for {function}:")
         print_stats(all_stats[function])
         print("")
-    '''
 
 # helper function to print out stats for a given hash function
 def print_stats(function_stats):

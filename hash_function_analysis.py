@@ -96,7 +96,7 @@ def analyze_function(hash_function, desired_size, function_stats):
     # test for condition 3: function should produce a large range of values (we want to avoid collisions)
     function_stats['collisions'] = pmf_stats['num_collisions']
     # test for condition 4: functions should produce very difference hash codes for similar inputs
-    function_stats['expected difference per input'] = pmf_stats['tot_dist_from_prev'] / desired_size
+    function_stats['expected difference per input'] = pmf_stats['tot_dist_from_prev'] / desired_size - 1
 
 # this helper function builds a PMF from a given hash function, using a generic list of inputs of the specified size
 def build_pmf(hash_function, desired_size, state) -> list:
@@ -155,7 +155,7 @@ def SDBM(s) -> int:
     hash_value = 0
     for char in s:
         # hash(i) = hash(i - 1) * 65599 + char
-        hash_value = ord(char) + (hash_value << 6) + (hash_value << 16) - hash_value
+        hash_value = ord(char) + ((hash_value << 6) + (hash_value << 16)) * hash_value
         # Ensures hash_value stays within a 32-bit unsigned integer range
         hash_value &= 0xFFFFFFFF
     return hash_value

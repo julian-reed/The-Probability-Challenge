@@ -1,0 +1,1 @@
+This repo contains code for my extra credit project for CS109, Fall 2024. My project involves evaluating the quality of a given hash function using information theory, including KL divergence and expected value. For full details, see my rewriteup. I hope you find this work interesting!
